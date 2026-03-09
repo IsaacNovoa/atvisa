@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATVISA | Alquiler de Autobuses y Microbuses en Valdeorras (Ourense)</title>
+  <meta name="description" content="Alquiler de Autobuses y Microbuses en Ourense para transporte turístico, congresos, discrecional y escolar.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ─── HOME HERO ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--navy-mid) 100%);
+      color: var(--white);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(200,150,62,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero .container {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,150,62,0.15);
+      border: 1px solid rgba(200,150,62,0.3);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 24px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold-light); }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 40px;
+    }
+    .hero-card-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    .hero-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .hero-card p { font-size: 0.92rem; color: rgba(255,255,255,0.6); margin-bottom: 0; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .hero-stat {
+      text-align: center;
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold-light);
+    }
+    .hero-stat span {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* NOTICE */
+    .notice-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 20px 0;
+    }
+    .notice-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 28px;
+      background: linear-gradient(135deg, rgba(200,150,62,0.06), rgba(200,150,62,0.02));
+      border: 1px solid rgba(200,150,62,0.15);
+      border-radius: var(--radius);
+    }
+    .notice-icon {
+      width: 48px; height: 48px;
+      background: var(--gold);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .notice-inner h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+    .notice-inner p { font-size: 0.85rem; color: var(--gray-500); }
+    .notice-inner a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    /* ABOUT GRID */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -16px; right: -16px;
+      background: var(--gold);
+      color: var(--white);
+      padding: 20px 28px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .about-badge strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+    }
+    .about-badge span {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .about-feature::before {
+      content: '✓';
+      width: 28px; height: 28px;
+      background: rgba(200,150,62,0.1);
+      color: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero h1 { font-size: 2.6rem; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 60px 0 50px; }
+      .hero h1 { font-size: 2rem; }
+      .notice-inner { flex-direction: column; text-align: center; }
+      .notice-inner a { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <span>Barxela, 1 · 32356 Petín (Ourense) · Tel. 988 310 790</span>
+      <div class="topbar-links">
+        <a href="texto-legal.html">Texto Legal</a>
+        <a href="proteccion-de-datos.html">Protección de Datos</a>
+        <a href="politica-de-cookies.html">Política de Cookies</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">AT<span>VISA</span></a>
+      <button class="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+      <nav>
+        <a href="index.html" class="active">Inicio</a>
+        <a href="nuestra-empresa.html">Empresa</a>
+        <a href="calidad.html">Calidad</a>
+        <a href="carta-de-servicios.html">Carta de Servicios</a>
+        <a href="flota-de-vehiculos.html">Flota</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="lineas-regulares.html">Líneas Regulares</a>
+        <a href="lineas-a-demanda.html">A Demanda</a>
+        <a href="objetos-perdidos.html">Objetos Perdidos</a>
+        <a href="contactar.html" class="nav-cta">Contactar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge fade-up">Disponibles 24h · 365 días</div>
+        <h1 class="fade-up delay-1">Transporte de viajeros en <em>Valdeorras</em></h1>
+        <p class="fade-up delay-2">Alquiler de autobuses y microbuses para excursiones, viajes programados, bodas, congresos y transporte escolar. Confort y seguridad en cada trayecto.</p>
+        <div class="hero-buttons fade-up delay-3">
+          <a href="contactar.html" class="btn btn-primary">Solicitar Presupuesto →</a>
+          <a href="flota-de-vehiculos.html" class="btn btn-outline">Ver Nuestra Flota</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-up delay-4">
+        <div class="hero-card">
+          <div class="hero-card-icon">🚌</div>
+          <h3>Su viaje, nuestra prioridad</h3>
+          <p>Flota moderna con la última tecnología en confort, seguridad y respeto con el medio ambiente.</p>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>24h</strong><span>Servicio</span></div>
+            <div class="hero-stat"><strong>365</strong><span>Días / año</span></div>
+            <div class="hero-stat"><strong>100%</strong><span>Calidad</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICE -->
+  <div class="notice-bar">
+    <div class="container">
+      <div class="notice-inner fade-up">
+        <div class="notice-icon">🆕</div>
+        <div>
+          <h4>Nuevas unidades de Mercedes EQV300</h4>
+          <p>Incorporamos a nuestra flota dos unidades EQV 100% eléctricas con la última tecnología en confort, seguridad y medio ambiente.</p>
+        </div>
+        <a href="flota-de-vehiculos.html">Ver vehículo →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section>
+    <div class="container">
+      <span class="section-label fade-up">Nuestros servicios</span>
+      <h2 class="section-title fade-up delay-1">Todo tipo de transporte de viajeros</h2>
+      <p class="section-subtitle fade-up delay-2">Nos adaptamos a sus necesidades con una amplia gama de vehículos y servicios personalizados.</p>
+      <div class="grid-3" style="margin-top: 48px;">
+        <div class="card fade-up delay-1">
+          <div class="card-icon">🏖️</div>
+          <h3>Turístico y Excursiones</h3>
+          <p>Excursiones, viajes programados y despedidas. Hacemos su viaje confortable y seguro.</p>
+          <a href="servicios.html" class="card-link">Más información →</a>
+        </div>
+        <div class="card fade-up delay-2">
+          <div class="card-icon">🎓</div>
+          <h3>Transporte Escolar</h3>
+          <p>Traslado diario de alumnos con los más altos estándares de seguridad y puntualidad.</p>
+          <a href="servicios.html" class="card-link">Más información →</a>
+        </div>
+        <div class="card fade-up delay-3">
+          <div class="card-icon">🏢</div>
+          <h3>Congresos y Eventos</h3>
+          <p>Transfers, traslados y logística completa para congresos y reuniones empresariales.</p>
+          <a href="servicios.html" class="card-link">Más información →</a>
+        </div>
+        <div class="card fade-up delay-4">
+          <div class="card-icon">🗺️</div>
+          <h3>Líneas Regulares</h3>
+          <p>Servicio de líneas regulares entre los pueblos de O Barco de Valdeorras y alrededores.</p>
+          <a href="lineas-regulares.html" class="card-link">Ver rutas y horarios →</a>
+        </div>
+        <div class="card fade-up delay-5">
+          <div class="card-icon">📞</div>
+          <h3>Líneas a Demanda</h3>
+          <p>Transporte flexible bajo demanda adaptado a sus necesidades específicas.</p>
+          <a href="lineas-a-demanda.html" class="card-link">Más información →</a>
+        </div>
+        <div class="card fade-up delay-5">
+          <div class="card-icon">💒</div>
+          <h3>Bodas y Celebraciones</h3>
+          <p>Servicio especial para bodas y celebraciones. Comodidad para todos sus invitados.</p>
+          <a href="contactar.html" class="card-link">Consultar →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <span class="section-label">Quiénes somos</span>
+      <h2 class="section-title">Una empresa con experiencia y compromiso</h2>
+      <div class="about-grid">
+        <div style="position: relative;">
+          <div class="img-placeholder" style="aspect-ratio: 4/3;">🚌</div>
+          <div class="about-badge"><strong>1978</strong><span>Fundación</span></div>
+        </div>
+        <div>
+          <p style="font-size: 1rem; color: #555; margin-bottom: 24px;">ATVISA es una empresa fundada en 1978 por José Manuel García Fernández, dedicada al transporte de viajeros en la comarca de Valdeorras (Ourense). Estamos a su servicio las 24 horas del día, los 365 días del año.</p>
+          <p style="font-size: 1rem; color: #555; margin-bottom: 24px;">Nuestra amplia gama de autobuses y microbuses se adapta a todas las necesidades de transporte, con la máxima calidad, seguridad y confort.</p>
+          <div class="about-features">
+            <div class="about-feature">Certificación ISO 9001</div>
+            <div class="about-feature">Certificación UNE 13816</div>
+            <div class="about-feature">Flota moderna</div>
+            <div class="about-feature">Servicio 24 horas</div>
+            <div class="about-feature">Conductores cualificados</div>
+            <div class="about-feature">Empresa familiar</div>
+          </div>
+          <div style="margin-top: 32px;">
+            <a href="nuestra-empresa.html" class="btn btn-primary">Conocer más →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="cert-bar">
+    <div class="container">
+      <span class="section-label">Calidad garantizada</span>
+      <h2 class="section-title" style="color: var(--white);">Certificados por AENOR</h2>
+      <p class="section-subtitle">Compromiso con la calidad y el servicio al cliente.</p>
+      <div class="cert-grid">
+        <div class="cert-item"><div class="cert-badge">ISO<br>9001</div><span>Gestión de Calidad</span></div>
+        <div class="cert-item"><div class="cert-badge">UNE<br>13816</div><span>Transporte de Viajeros</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <span class="section-label">Contacte con nosotros</span>
+      <h2 class="section-title">¿Necesita un presupuesto?</h2>
+      <p>Estamos a su disposición para cualquier consulta o reserva. Sin compromiso.</p>
+      <a href="contactar.html" class="btn btn-primary" style="font-size: 1rem; padding: 16px 40px;">Contactar ahora →</a>
+      <div class="cta-contact">
+        <div class="cta-contact-item"><div class="icon-circle">📞</div><div><strong>988 310 790</strong><span>Teléfono</span></div></div>
+        <div class="cta-contact-item"><div class="icon-circle">📠</div><div><strong>988 310 883</strong><span>Fax</span></div></div>
+        <div class="cta-contact-item"><div class="icon-circle">📍</div><div><strong>Barxela, 1</strong><span>32356 Petín (Ourense)</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">AT<span>VISA</span></a>
+          <p>Alquiler de autobuses y microbuses en Valdeorras (Ourense). Transporte de viajeros con calidad, confort y seguridad.</p>
+        </div>
+        <div>
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="nuestra-empresa.html">Nuestra Empresa</a></li>
+            <li><a href="calidad.html">Política de Calidad</a></li>
+            <li><a href="carta-de-servicios.html">Carta de Servicios</a></li>
+            <li><a href="flota-de-vehiculos.html">Flota de Vehículos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="lineas-regulares.html">Líneas Regulares</a></li>
+            <li><a href="lineas-a-demanda.html">Líneas a Demanda</a></li>
+            <li><a href="objetos-perdidos.html">Objetos Perdidos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="contactar.html">Formulario de contacto</a></li>
+            <li><a href="tel:988310790">Tel: 988 310 790</a></li>
+            <li><a>Fax: 988 310 883</a></li>
+            <li><a>Barxela, 1 · 32356 Petín</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ATVISA. Todos los derechos reservados.</span>
+        <div class="footer-legal">
+          <a href="texto-legal.html">Texto Legal</a>
+          <a href="proteccion-de-datos.html">Protección de Datos</a>
+          <a href="politica-de-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
