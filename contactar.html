@@ -24,7 +24,14 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
-    .form-row > * { min-width: 0; }
+    .form-row > * { min-width: 0; overflow: hidden; }
+    .form-row input,
+    .form-row select {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+    }
     .form-section-title {
       font-size: 0.78rem;
       font-weight: 700;
@@ -87,21 +94,21 @@
           <h2>Datos de Contacto</h2>
           <div style="margin-top: 20px;">
             <div class="info-box" style="margin-bottom: 16px;">
-              <div class="info-box-icon">📍</div>
+              <div class="info-box-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
               <div>
                 <h4>Dirección</h4>
                 <p>Barxela, 1<br>32356 Petín (Ourense)</p>
               </div>
             </div>
             <div class="info-box" style="margin-bottom: 16px;">
-              <div class="info-box-icon">📞</div>
+              <div class="info-box-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
               <div>
                 <h4>Teléfonos</h4>
                 <p>Tel: <strong>988 310 790</strong><br>Fax: 988 311 556</p>
               </div>
             </div>
             <div class="info-box">
-              <div class="info-box-icon">🕐</div>
+              <div class="info-box-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
               <div>
                 <h4>Horarios de atención</h4>
                 <p>De lunes a viernes:<br><strong>9:00 – 13:30</strong> y <strong>15:30 – 19:30</strong></p>
@@ -120,7 +127,7 @@
 
       <!-- FORMULARIO PRESUPUESTO DISCRECIONAL -->
       <div class="content-block fade-up delay-2" style="margin-top: 48px;">
-        <h2>Reservar servicio discrecional</h2>
+        <h2>Solicitar servicio discrecional</h2>
         <p>¿Necesita un autobús o microbús para una excursión, boda, congreso u otro evento? Rellene este formulario y le enviaremos un presupuesto personalizado.</p>
 
         <!-- DATOS DE CONTACTO -->
@@ -147,6 +154,21 @@
         <div class="form-section-title">Descripción del servicio</div>
         <div class="form-row">
           <div class="form-group">
+            <label for="disc-tipo">Tipo de servicio *</label>
+            <select id="disc-tipo" required>
+              <option value="">Seleccione tipo de servicio</option>
+              <option value="Excursión / Viaje turístico">Excursión / Viaje turístico</option>
+              <option value="Boda / Celebración">Boda / Celebración</option>
+              <option value="Congreso / Evento empresarial">Congreso / Evento empresarial</option>
+              <option value="Transfer (aeropuerto, estación...)">Transfer (aeropuerto, estación...)</option>
+              <option value="Transporte escolar">Transporte escolar</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
             <label for="disc-origen">Origen *</label>
             <input type="text" id="disc-origen" placeholder="Ciudad o punto de salida" required>
           </div>
@@ -167,12 +189,12 @@
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="disc-fecha-vuelta">Fecha vuelta *</label>
-            <input type="date" id="disc-fecha-vuelta" required>
+            <label for="disc-fecha-vuelta">Fecha vuelta</label>
+            <input type="date" id="disc-fecha-vuelta">
           </div>
           <div class="form-group">
-            <label for="disc-hora-vuelta">Hora vuelta *</label>
-            <input type="time" id="disc-hora-vuelta" required>
+            <label for="disc-hora-vuelta">Hora vuelta</label>
+            <input type="time" id="disc-hora-vuelta">
           </div>
         </div>
         <div class="form-row">
@@ -183,8 +205,8 @@
           <div class="form-group"></div>
         </div>
         <div class="form-group">
-          <label for="disc-descripcion">Descripción del servicio *</label>
-          <textarea id="disc-descripcion" placeholder="Paradas intermedias, necesidades especiales, detalles del viaje..." style="min-height: 110px;" required></textarea>
+          <label for="disc-descripcion">Descripción del servicio</label>
+          <textarea id="disc-descripcion" placeholder="Paradas intermedias, necesidades especiales, detalles del viaje..." style="min-height: 110px;"></textarea>
         </div>
 
         <!-- VALIDACIÓN -->
@@ -211,6 +233,7 @@
       const nombre = document.getElementById('disc-nombre').value.trim();
       const email = document.getElementById('disc-email').value.trim();
       const telefono = document.getElementById('disc-telefono').value.trim();
+      const tipo = document.getElementById('disc-tipo').value;
       const origen = document.getElementById('disc-origen').value.trim();
       const destino = document.getElementById('disc-destino').value.trim();
       const fechaIda = document.getElementById('disc-fecha-ida').value;
@@ -221,7 +244,7 @@
       const descripcion = document.getElementById('disc-descripcion').value.trim();
       const privacidad = document.getElementById('disc-privacidad').checked;
 
-      if (!nombre || !email || !telefono || !origen || !destino || !fechaIda || !horaIda || !plazas) {
+      if (!nombre || !email || !telefono || !tipo || !origen || !destino || !fechaIda || !horaIda || !plazas) {
         alert('Por favor, rellene todos los campos obligatorios (*).');
         return;
       }
@@ -244,6 +267,7 @@
         nombre: nombre,
         email: email,
         telefono: telefono,
+        tipo: tipo,
         origen: origen,
         destino: destino,
         fecha_ida: fechaIda + ' a las ' + horaIda,
@@ -256,6 +280,7 @@
         document.getElementById('disc-nombre').value = '';
         document.getElementById('disc-email').value = '';
         document.getElementById('disc-telefono').value = '';
+        document.getElementById('disc-tipo').value = '';
         document.getElementById('disc-origen').value = '';
         document.getElementById('disc-destino').value = '';
         document.getElementById('disc-fecha-ida').value = '';

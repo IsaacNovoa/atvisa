@@ -327,11 +327,17 @@ section { padding: 88px 0; }
   margin-bottom: 18px;
   transition: all var(--transition);
   border: 1px solid rgba(37,100,168,0.08);
+  color: var(--blue);
+}
+.card-icon svg {
+  width: 24px;
+  height: 24px;
 }
 .card:hover .card-icon {
   background: linear-gradient(135deg, var(--navy), var(--blue));
   border-color: transparent;
   transform: scale(1.05);
+  color: var(--white);
 }
 .card h3 {
   font-weight: 700;
@@ -366,11 +372,26 @@ section { padding: 88px 0; }
   margin-bottom: 28px;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--gray-200);
-  transition: box-shadow var(--transition);
+  transition: all var(--transition);
   overflow: hidden;
   min-width: 0;
+  position: relative;
 }
-.content-block:hover { box-shadow: var(--shadow); }
+.content-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--sunset));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.content-block:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(37,100,168,0.12);
+}
+.content-block:hover::before { opacity: 1; }
 .content-block h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
@@ -517,8 +538,9 @@ section { padding: 88px 0; }
 }
 .cert-badge:hover {
   border-color: var(--sunset);
-  background: rgba(232,133,58,0.08);
-  transform: scale(1.05);
+  background: rgba(232,133,58,0.12);
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(232,133,58,0.15);
 }
 .cert-item span {
   font-size: 0.78rem;
@@ -570,11 +592,19 @@ section { padding: 88px 0; }
   display: flex; align-items: center; justify-content: center;
   font-size: 1.15rem;
   transition: all var(--transition);
+  color: var(--blue);
+}
+.cta-contact-item .icon-circle svg {
+  width: 22px;
+  height: 22px;
+  transition: inherit;
 }
 .cta-contact-item:hover .icon-circle {
   background: linear-gradient(135deg, var(--navy), var(--blue));
   border-color: transparent;
-  transform: scale(1.05);
+  transform: scale(1.08);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(27,20,100,0.2);
 }
 .cta-contact-item strong { display: block; font-size: 1rem; color: var(--navy); }
 .cta-contact-item span { font-size: 0.78rem; color: var(--gray-500); }
@@ -714,19 +744,47 @@ footer ul a:hover {
   align-items: flex-start;
   gap: 18px;
   transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.info-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, var(--blue), var(--sunset));
+  opacity: 0;
+  transition: opacity var(--transition);
 }
 .info-box:hover {
+  transform: translateY(-3px);
   border-color: rgba(37,100,168,0.15);
   box-shadow: var(--shadow);
 }
+.info-box:hover::before { opacity: 1; }
 .info-box-icon {
   width: 46px; height: 46px;
-  background: linear-gradient(135deg, var(--navy), var(--blue));
+  background: linear-gradient(135deg, rgba(27,20,100,0.06), rgba(37,100,168,0.06));
+  border: 1px solid rgba(37,100,168,0.08);
   border-radius: 11px;
   display: flex; align-items: center; justify-content: center;
   font-size: 1.2rem;
   flex-shrink: 0;
+  box-shadow: none;
+  color: var(--blue);
+  transition: all var(--transition);
+}
+.info-box-icon svg {
+  width: 22px;
+  height: 22px;
+  transition: inherit;
+}
+.info-box:hover .info-box-icon {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  border-color: transparent;
+  color: var(--white);
   box-shadow: 0 4px 10px rgba(27,20,100,0.2);
+  transform: scale(1.05);
 }
 .info-box h4 { font-weight: 700; font-size: 0.93rem; margin-bottom: 4px; color: var(--navy); }
 .info-box p { font-size: 0.84rem; color: var(--gray-500); margin: 0; line-height: 1.6; }
@@ -758,6 +816,7 @@ footer ul a:hover {
   font-size: 0.88rem;
   border-bottom: 1px solid var(--gray-100);
   color: var(--gray-700);
+  transition: background var(--transition);
 }
 .data-table tr:last-child td { border-bottom: none; }
 .data-table tr:hover td { background: rgba(37,100,168,0.02); }
